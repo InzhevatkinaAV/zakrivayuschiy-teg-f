@@ -6,6 +6,12 @@
         fill: var(--accent-color);
       }
     }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        fill: var(--accent-color);
+      }
+    }
 </style>
 
 <path d="M128 128H160V160H128V128Z" fill="black"/>
