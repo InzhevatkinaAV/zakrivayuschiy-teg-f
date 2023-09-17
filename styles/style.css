@@ -209,10 +209,8 @@
 }
 
 .card__icon-button {
-  border: none;
   outline: none;
   background-color: var(--background-color);
-  transition: all 0.5s;
   height: 39px;
   display: flex;
   border: 2px solid transparent;
@@ -412,7 +410,7 @@
   color: var(--accent-color);
 }
 
-.modal-window__floppy_image{
+.modal-window__floppy_image {
   fill: var(--color-button-text);
   z-index: 10;
   width: 40px;
