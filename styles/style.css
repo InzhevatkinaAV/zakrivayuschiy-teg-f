@@ -17,17 +17,16 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  padding-top: 132px;
-
+  padding-top: 102px;
   font-family: var(--main-font), sans-serif;
   font-variation-settings: 'wgth' var(--main-card-font-weight);
   color: var(--accent-color);
   font-size: 18px;
+}
 
+.body {
   background-image: var(--background-image);
   background-size: cover;
-  min-width: 100vw;
-  min-height: 100vh;
 }
 
 @supports (font-variation-settings: normal) {
@@ -39,8 +38,7 @@
 /* Шапка страницы */
 .header {
   width: min(698px, 99%);
-  height: 368px;
-  padding: 147px 0 16px 0;
+  padding: 136px 0 15px 0;
   background-color: var(--background-color);
   margin: 0 auto 100px auto;
 
@@ -55,28 +53,31 @@
   border: 2px solid var(--accent-color);
 }
 
-.h1 {
+.a {
   font-size: 65px;
   margin-bottom: 20px;
+  text-decoration: none;
+  color: var(--accent-color);
 }
 
-.h2 {
+.h1 {
   text-transform: uppercase;
   font-size: 23px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .theme-menu__button {
   border: none;
   outline: none;
   background-color: transparent;
-  margin-bottom: 10px;
+  margin-bottom: 7px;
   margin-left: 15px;
   position: relative;
   font-size: 14px;
   transition: all .3s ease;
   opacity: 1;
   text-transform: uppercase;
+  padding: 0;
 }
 
 .theme-menu__button:before {
@@ -125,7 +126,7 @@
 
 /* Карточки */
 .card__item {
-  width: min(698px, 95%);
+  width: min(698px, 99%);
   background-color: var(--background-color);
   margin: 0 auto 50px auto;
   border: 2px solid var(--accent-color);
@@ -149,9 +150,22 @@
   position: absolute;
   right: 25px;
   top: 25px;
-  -webkit-text-stroke: 1px var(--label-line-color);
   z-index: 10;
+
+  text-shadow:
+    -1px 0 var(--label-line-color), 
+     0 1px var(--label-line-color), 
+     1px 0 var(--label-line-color), 
+     0 -1px var(--label-line-color);
 }
+
+@supports((text-stroke: 1px var(--label-line-color)) or (-webkit-text-stroke: 1px var(--label-line-color))) {
+  .card__item_watermark {
+      -webkit-text-stroke: 1px var(--label-line-color);
+      text-stroke: 1px var(--label-line-color);
+      text-shadow: none;
+  }
+} 
 
 .card__item_text {
   margin: 25px;
@@ -180,6 +194,7 @@
 
 .modal-window__button,
 .card__like-button {
+  cursor: pointer;
   position: relative;
   display: flex;
   width: 130px;
@@ -196,6 +211,7 @@
 }
 
 .card__icon-button {
+  cursor: pointer;
   outline: none;
   background-color: var(--background-color);
   height: 39px;
@@ -248,11 +264,12 @@
 
 /* Условный подвал */
 .save__button {
+  cursor: pointer;
   position: relative;
   display: flex;
   margin: 0 auto;
-  max-width: 335px;
-  height: 51px;
+  width: 340px;
+  height: 55px;
   align-items: center;
   justify-content: center;
   font-family: var(--accent-font);
@@ -270,26 +287,6 @@
   stroke: var(--color-button-text);
   mix-blend-mode: difference;
   z-index: 10;
-}
-
-/* Сердце */
-.sparks {
-  fill: var(--color-body-heart);
-  opacity: 0;
-}
-
-.main-body {
-  fill: var(--color-none-body-heart);
-  transition: fill .3s linear; 
-}
-
-.core {
-  fill: var(--color-none-body-heart);
-  transition: fill .3s linear .03s; 
-}
-
-.contour {
-  fill: var(--accent-color);
 }
 
 /* Наведение */
@@ -341,18 +338,15 @@
 /* Модальное окно */
 .modal-window {
   width: 357px;
-  height: 195px;
   background-color: var(--background-color);
 
   font-family: var(--accent-font);
   text-transform: uppercase;
   font-size: 14px;
 
-  padding: 30px;
-
+  padding: 32px 42px 32px;
   border: 2px solid var(--accent-color);
 }
-
 
 .modal-window__inner {
   display: flex;
@@ -378,12 +372,12 @@
 .modal-window__floppy_image {
   stroke: var(--accent-color);
   z-index: 10;
-  width: 40px;
+  width: 90px;
   height: 40px;
 }
 
 .modal-window__button {
-  width: 100%;
+  width: 257px;
   height: 38px;
   margin-top: 30px;
 }
@@ -423,15 +417,28 @@ dialog::backdrop {
 
 @media (width <= 476px) {
   .header {
-    height: 371px;
     padding-top: 120px;
   }
 
-  .h1 {
-    font-size: 35px;
+  .a {
+    font-size: 49px;
   }
 
-  .h2 {
-    font-size: 15px;
+  .h1 {
+    font-size: 14px;
+  }
+
+  .save__button {
+    flex-direction: column;
+    width: 306px;
+    height: 80px;
+    padding: 15px 0;
+    justify-content: space-between; 
+  }
+
+  .floppy_image {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
   }
 }
